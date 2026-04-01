@@ -7,18 +7,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
-struct DATE{
+typedef struct DATE{
     int ngay;
     int thang;
     int nam;
-};
+}DATE;
 
-struct Sinhvien{
+typedef struct Sinhvien{
     char mssv[9];
     char hotensv[30];
     struct DATE NTNS;
     int diemthi; 
-};
+}Sinhvien;
 
 void Nhapsv(struct Sinhvien *x)
 {
