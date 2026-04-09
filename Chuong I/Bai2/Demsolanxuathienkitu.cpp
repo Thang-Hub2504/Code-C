@@ -1,33 +1,30 @@
 #include<stdio.h>
 #include<string.h>
-#define N 256
+
 int main()
 {
     char nd[1000];
-    int freq[N]={0};
-        fflush(stdin);
-        fgets(nd, sizeof(nd), stdin);
+    int so[256]={0};
 
-        int len =strlen(nd);
-        for(int i=0;i<len;i++)
+    printf("Nhap chuoi: ");
+    if(fgets(nd, sizeof(nd), stdin))
+    {
+        nd[strcspn(nd, "\n")] = '\0';
+        for (int i = 0; nd[i] != '\0'; i++)
         {
-            if(nd[i] != '\n')
+            so[(unsigned char)nd[i]]++;
+        }
+
+
+        for (int i = 0; i < 256; i++)
+        {
+            if (so[i] > 0)
             {
-            freq[(unsigned char)nd[i]]++;
+                if (i == ' ')
+                printf("  ' ' | %d\n", so[i]);
+            else
+                printf("  '%c' | %d\n", i, so[i]);
             }
         }
-
-    printf("\nKy tu | So lan xuat hien\n");
-    printf("------+------------------\n");
-
-    for (int i = 0; i < N; i++) {
-        if (freq[i] > 0) {
-            if (i == ' ')
-                printf("  ' ' | %d\n", freq[i]);
-            else
-                printf("  '%c' | %d\n", i, freq[i]);
-        }
-    }
-
-    return 0;
+    }   return 0;
 }
